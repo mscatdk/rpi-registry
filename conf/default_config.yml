@@ -1,0 +1,8 @@
+version: 0.1
+storage:
+  cache:
+    blobdescriptor: inmemory
+  filesystem:
+    rootdirectory: /var/lib/registry-cache
+http:
+  addr: :5000
