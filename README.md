@@ -50,7 +50,7 @@ cd bin/
 ls
 ```
 
-## Build docker image
+### Build docker image
 
 This step "must" be done on the Raspberry PI.
 
