@@ -10,13 +10,15 @@ The simplest way to get started is to run the command
 docker run -d -p 5000:5000 mscatdk/rpi-registry:latest
 ```
 
-The registry cache is stored in /var/lib/registry-cache; hence, the data can stored locally by running.
+The registry cache is stored in /var/lib/registry-cache; hence, the data can be stored locally by running.
 
 ```bash
 docker run -d -p 5000:5000 -v /path/to/local/registry-cache:/var/lib/registry-cache mscatdk/rpi-registry:latest
 ```
 
-The default configuration file is /etc/registry/default_config.yml and the directory /etc/registry only contain this single file. Hence, the content of this directory can be updated to fit your needs.
+The default configuration file path is /etc/registry/default_config.yml and the directory /etc/registry only contain this single file. Hence, you can bind a local directory with your own configuration file to /etc/registry in case needed.
+
+The docker images can be found on Docker Hub: https://hub.docker.com/r/mscatdk/rpi-registry/
 
 ## Build Process
 
