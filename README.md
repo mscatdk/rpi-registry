@@ -29,6 +29,10 @@ The build process is split into two steps. The first step is to build the regist
 This can be done on any x86 or x86-64 (aka. AMD64) Linux machine by performing the below steps
 
 ```bash
+#!/bin/bash
+
+export APP_VERSION=2.6.2
+
 # Installing go + dependencies
 sudo apt-get update
 sudo apt-get install -y curl git mercurial make  binutils bison gcc build-essential
@@ -42,14 +46,16 @@ export GOROOT_BOOTSTRAP=$GOROOT
 gvm use go1.8 --default
 
 #The actual build
+mkdir -p go/src/github.com/docker
+export GOPATH=`pwd`/go
+cd go/src/github.com/docker
+pwd
 git clone https://github.com/docker/distribution.git
 cd distribution/
+git checkout tags/v$APP_VERSION -b release/v$APP_VERSION
 
 go get ./...
 GOOS=linux GOARCH=arm make binaries
-
-cd bin/
-ls
 ```
 
 ### Build docker image
