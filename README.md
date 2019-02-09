@@ -26,36 +26,10 @@ The build process is split into two steps. The first step is to build the regist
 
 ### Build Binaries
 
-This can be done on any x86 or x86-64 (aka. AMD64) Linux machine by performing the below steps
+This can be done on any x86 or x86-64 (aka. AMD64) Linux machine by running the run-build.sh script. This will start a docker container building the binary; hence, docker is required.
 
 ```bash
-#!/bin/bash
-
-export APP_VERSION=2.6.2
-
-# Installing go + dependencies
-sudo apt-get update
-sudo apt-get install -y curl git mercurial make  binutils bison gcc build-essential
-
-bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
-source /home/vagrant/.gvm/scripts/gvm
-
-gvm install go1.4
-gvm use go1.4
-export GOROOT_BOOTSTRAP=$GOROOT
-gvm use go1.8 --default
-
-#The actual build
-mkdir -p go/src/github.com/docker
-export GOPATH=`pwd`/go
-cd go/src/github.com/docker
-pwd
-git clone https://github.com/docker/distribution.git
-cd distribution/
-git checkout tags/v$APP_VERSION -b release/v$APP_VERSION
-
-go get ./...
-GOOS=linux GOARCH=arm make binaries
+./run-build.sh
 ```
 
 ### Build docker image
