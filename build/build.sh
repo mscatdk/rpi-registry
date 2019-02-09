@@ -11,7 +11,7 @@ git checkout tags/v$APP_VERSION -b release/v$APP_VERSION
 go get ./...
 GOOS=linux GOARCH=arm make binaries
 
-echo "Build completed... Run docker cp $(hostname):/go/bin/registry ./binary"
+echo "Build completed... Run docker cp $(hostname):/go/src/github.com/docker/distribution/bin/registry ./binary"
 
 while true
 do
